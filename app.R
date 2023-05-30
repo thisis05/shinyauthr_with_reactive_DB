@@ -1,4 +1,4 @@
-library(shiny);library(DBI);library(shinydashboard);library(RSQLite);library(shinyauthr);library(shinyjs);library(shinyWidgets)
+library(shiny);library(DBI);library(shinydashboard);library(RSQLite);library(shinyauthr);library(shinyWidgets)
 source("MyloginServer.R")
 
 
