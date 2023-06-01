@@ -48,7 +48,7 @@ discon <- function(){
 
 ### 2. `shinyauthr::loginServer` Customizing : `MyloginServer`
 
-다음과 같은 내용을 수정하였습니다. (상세한 내용은 `MyloginServer.R`에서 확인 가능합니다.)
+Explanation of the modified code versus original `loginServer` (details in `MyloginServer.R`).
 
 #### (1) Parameter
 
@@ -242,6 +242,31 @@ server <- function(input, output) {
   })
 
 }
+```
 
-  
+If a user successfully logs in, `credentials()$user_auth == TRUE`. Therefore, if you want to show a Tab only after the login is completed, you need to set it for each UI using `req(credentials()$user_auth)` option.
+In addition, `credentials()$info` will hold the values of each column in the login DB as variables once the login is completed.
+The logic of this example is as follows:
+
+1. User registration
+2. Save the registration information into the DB
+3. Log in with the registered information
+4. check and verify DB information reactively upon login 
+5, If the login is successful, check `credentials()$user_auth == TRUE` and render UI
+
+
+### 4. Example 
+
+(1) log in UI
+
+<img width="1271" alt="image" src="https://github.com/thisis05/shinyauthr_with_reactive_DB/assets/118661725/1af8b9f8-dc28-4bc9-85fa-74192634383d">
+
+(2) Register
+
+<img width="1273" alt="image" src="https://github.com/thisis05/shinyauthr_with_reactive_DB/assets/118661725/98f96af5-a2a6-4703-8be9-b1b2907c3cc6">
+
+(3) After log in
+
+<img width="1261" alt="image" src="https://github.com/thisis05/shinyauthr_with_reactive_DB/assets/118661725/a7bd31a6-88a9-4be4-9824-422a4063ba91">
+
   
